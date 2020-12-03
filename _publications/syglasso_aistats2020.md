@@ -4,7 +4,6 @@ collection: publications
 permalink: /publication/syglasso_aistats2020
 date: 2020-12-02
 venue: 'The 23rd International Conference on Artificial Intelligence and Statistics (AISTATS 2020)'
-paperurl: 'http://proceedings.mlr.press/v108/wang20d.html'
 ---
 
 [PDF](https://arxiv.org/pdf/2002.00288.pdf)
