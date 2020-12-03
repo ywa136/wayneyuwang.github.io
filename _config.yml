@@ -82,12 +82,12 @@ analytics:
 author:
   name             : "Wayne Wang 王昱"
   avatar           : "profile.jpg"
-  bio              : "Statistician"
+  bio              : "Statistics&Machine learning researcher"
   location         : "Ann Arbor, Michigan"
   employer         :
   pubmed           : 
   googlescholar    : # "http://yourfullgooglescholarurl.com"
-  email            :
+  email            : "wayneyw@umich.edu"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
