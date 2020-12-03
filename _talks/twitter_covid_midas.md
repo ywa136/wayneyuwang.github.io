@@ -1,7 +1,7 @@
 ---
 title: "A scalable tool for longitudinal Twitter analysis: understanding the impact of COVID-19 on public discourse"
 collection: talks
-type: "Invited seminar talks"
+type: "Invited seminar talk"
 permalink: /talks/twitter_covid_midas
 venue: "Michigan Institute for Data Science: COVID-19 Data Science Research Special Webinar Series"
 date: 2020-07-08
