@@ -81,9 +81,9 @@ analytics:
 # Site Author
 author:
   name             : "Wayne Wang 王昱"
-  avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
-  location         : "Location"
+  avatar           : "profile.JPG"
+  bio              : "Statistician"
+  location         : "Ann Arbor, Michigan"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "http://yourfullgooglescholarurl.com"
