@@ -3,6 +3,6 @@ title: "A Proximal Alternating Linearized Minimization Method for Tensor Graphic
 collection: publications
 permalink: /publication/sg-palm_aistats2021
 date: 2020-11-01
-venue: 'The 24th International Conference on Artificial Intelligence and Statistics (**Under review**)'
+venue: 'The 24th International Conference on Artificial Intelligence and Statistics (<b><i>Under reveiw</i></b>)'
 ---
 **Yu Wang**, Alfred Hero
