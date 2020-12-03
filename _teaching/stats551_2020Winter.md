@@ -7,5 +7,5 @@ venue: "University of Michigan"
 date: 2020-03-01
 location: "Ann Arbor, MI"
 ---
-
+Role: Graduate Student Instructor
 [Syllabus](https://ywa136.github.io/files/STATS551WIN2020Syllabus.pdf)
