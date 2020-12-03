@@ -3,7 +3,7 @@ title: "Approximately Optimal Subset Selection for Statistical Design and Modell
 collection: publications
 permalink: /publication/dpp_jscs2021
 date: 2019-07-01
-venue: 'ArXiv'
+venue: 'Journal of Statistical Computation and Simulation (<b><i>Under reveiw</i></b>)'
 paperurl: https://arxiv.org/abs/1709.00151
 ---
 **Yu Wang**, Nhu D Le, Jim V Zidek
