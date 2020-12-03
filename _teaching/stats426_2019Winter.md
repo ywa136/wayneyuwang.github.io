@@ -10,3 +10,4 @@ location: "Ann Arbor, MI"
 
 Role: Graduate Student Instructor
 
+Description: An introduction to theoretical statistics for students with a background in probability. Probability models for experimental and observational data, normal sampling theory, likelihood-based and Bayesian approaches to point estimation, confidence intervals, tests of hypotheses, and an introduction to regression and the analysis of variance.
