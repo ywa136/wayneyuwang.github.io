@@ -8,4 +8,5 @@ date: 2020-07-08
 location: "Zoom"
 ---
 
-[Video recording](https://www.youtube.com/watch?v=ZD7SDRhzD1M&feature=youtu.be)
+[Recording](https://www.youtube.com/watch?v=ZD7SDRhzD1M&feature=youtu.be)
+[Slides](https://ywa136.github.io/files/twitter_covdi_present_midas.pdf)
