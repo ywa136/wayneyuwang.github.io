@@ -6,3 +6,4 @@ date: 2020-06-01
 venue: 'The 23rd International Conference on Artificial Intelligence and Statistics (AISTATS)'
 paperurl: http://proceedings.mlr.press/v108/wang20d
 ---
+**Yu Wang**, Byoungwook Jang, Alfred Hero
