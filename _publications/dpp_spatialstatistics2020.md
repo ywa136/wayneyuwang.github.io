@@ -6,3 +6,4 @@ date: 2020-06-01
 venue: 'Spatial Statistics, Special Issue: Frontiers in Spatial and Spatio-temporal Research'
 paperurl: https://www.sciencedirect.com/science/article/pii/S2211675320300038
 ---
+**Yu Wang**, Nhu D Le, Jim V Zidek
