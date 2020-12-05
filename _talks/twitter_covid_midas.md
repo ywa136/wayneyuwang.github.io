@@ -9,4 +9,4 @@ location: "Zoom"
 ---
 
 [Recording](https://www.youtube.com/watch?v=ZD7SDRhzD1M&feature=youtu.be)
-[Slides](https://ywa136.github.io/files/twitter_covdi_present_midas.pdf)
+[Slides](https://ywa136.github.io/files/twitter_covid_present_midas.pdf)
