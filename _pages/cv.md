@@ -9,6 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
+<---!
 Education
 ======
 * B.S. (Honours with distinction) in Actuarial Science, Mathematics and Statistics, Simon Fraser University, 2016
@@ -32,6 +33,7 @@ Teaching
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
+--->
   
 Service
 ======
