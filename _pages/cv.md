@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: https://ywa136.github.io/files/cv_academic.pdf
+permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
