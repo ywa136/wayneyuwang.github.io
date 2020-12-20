@@ -9,4 +9,4 @@ redirect_from:
 
 {% include base_path %}
 
-[CV](https://ywa136.github.io/files/cv_academic.pdf)
+You can download a copy of my [CV](https://ywa136.github.io/files/cv_academic.pdf) (updated December 2020)
