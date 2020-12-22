@@ -9,8 +9,15 @@ author_profile: true
   You can also find my articles on <u><a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</u>
 {% endif %}
 
-{% include base_path %}
-
 {% for post in site.publications reversed %}
-  {% include archive-single.html %}
+  {% if post.pubtype == 'article' %}
+      {% include archive-single.html %}
+  {% endif %}
+{% endfor %}
+
+<h1>Submitted</h1>
+{% for post in site.publications reversed %}
+  {% if post.pubtype == 'submitted' %}
+      {% include archive-single.html %}
+  {% endif %}
 {% endfor %}

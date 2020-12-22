@@ -1,48 +1,10 @@
-
-# coding: utf-8
+#!/usr/bin/env python
 
 # # Publications markdown generator for academicpages
 # 
-# Takes a TSV of publications with metadata and converts them for use with [academicpages.github.io](academicpages.github.io). This is an interactive Jupyter notebook, with the core python code in publications.py. Run either from the `markdown_generator` folder after replacing `publications.tsv` with one that fits your format.
-# 
-# TODO: Make this work with BibTex and other databases of citations, rather than Stuart's non-standard TSV format and citation style.
-# 
+# Take a .bib file and parse each item and write into appropriate .md file for use 
 
-# ## Data format
-# 
-# The TSV needs to have the following columns: pub_date, title, venue, excerpt, citation, site_url, and paper_url, with a header at the top. 
-# 
-# - `excerpt` and `paper_url` can be blank, but the others must have values. 
-# - `pub_date` must be formatted as YYYY-MM-DD.
-# - `url_slug` will be the descriptive part of the .md file and the permalink URL for the page about the paper. The .md file will be `YYYY-MM-DD-[url_slug].md` and the permalink will be `https://[yourdomain]/publications/YYYY-MM-DD-[url_slug]`
-
-
-# ## Import pandas
-# 
-# We are using the very handy pandas library for dataframes.
-
-# In[2]:
-
-import pandas as pd
-
-
-# ## Import TSV
-# 
-# Pandas makes this easy with the read_csv function. We are using a TSV, so we specify the separator as a tab, or `\t`.
-# 
-# I found it important to put this data in a tab-separated values format, because there are a lot of commas in this kind of data and comma-separated values can get messed up. However, you can modify the import statement, as pandas also has read_excel(), read_json(), and others.
-
-# In[3]:
-
-publications = pd.read_csv("publications.tsv", sep="\t", header=0)
-publications
-
-
-# ## Escape special characters
-# 
-# YAML is very picky about how it takes a valid string, so we are replacing single and double quotes (and ampersands) with their HTML encoded equivilents. This makes them look not so readable in raw format, but they are parsed and rendered nicely.
-
-# In[4]:
+import bibtexparser
 
 html_escape_table = {
     "&": "&amp;",
@@ -50,59 +12,140 @@ html_escape_table = {
     "'": "&apos;"
     }
 
+
 def html_escape(text):
     """Produce entities within text."""
     return "".join(html_escape_table.get(c,c) for c in text)
 
 
+def parse_author(a, keyfirst="Yu", keylast="Wang"):
+    """Parses author name in the format of `Last, First Middle` where
+    the middle name is sometimes there and sometimes not (and could just be an initial)
+    
+    Returns: author name as `F. M. Last`
+    """
+    
+    a = a.split(', ')
+    last = a[0].strip()
+    fm = a[1].split(' ')
+    first = fm[0][0] + '.'
+    
+    if len(fm) > 1:
+        middle = fm[1][0] + '.'
+    else:
+        middle = ''
+    
+    if last == keylast and fm[0] == keyfirst:
+        if not middle == '':
+            return '<b><i>' + first + ' ' + middle + ' ' + last + '</i></b>'
+        else:
+            return '<b><i>' + first + ' ' + last + '</i></b>'
+    else:
+        if not middle == '':
+            return first + ' ' + middle + ' ' + last
+        else:
+            return first + ' ' + last
+
+
 # ## Creating the markdown files
 # 
-# This is where the heavy lifting is done. This loops through all the rows in the TSV dataframe, then starts to concatentate a big string (```md```) that contains the markdown for each type. It does the YAML metadata first, then does the description for the individual page. If you don't want something to appear (like the "Recommended citation")
-
-# In[5]:
-
 import os
-for row, item in publications.iterrows():
+from datetime import datetime
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+os.chdir(dir_path)
+
+parser = bibtexparser.bparser.BibTexParser(common_strings=True, ignore_nonstandard_types=False)
+with open("../../cv-academic/cv.bib") as bibtex_file:
+    publications = bibtexparser.load(bibtex_file, parser=parser)
+
+for item in publications.entries:
     
-    md_filename = str(item.pub_date) + "-" + item.url_slug + ".md"
-    html_filename = str(item.pub_date) + "-" + item.url_slug
-    year = item.pub_date[:4]
-    
+    item = bibtexparser.customization.add_plaintext_fields(item)
+    year = item['plain_year'] if 'plain_year' in item else item['plain_date'].split('-')[0]
+    key = item['plain_ID']
+
+    md_filename = key + ".md"
+    html_filename = key
+
     ## YAML variables
-    
-    md = "---\ntitle: \""   + item.title + '"\n'
-    
+
+    md = "---\ntitle: \""   + item['plain_title'] + '"\n'
+
     md += """collection: publications"""
-    
+
     md += """\npermalink: /publication/""" + html_filename
-    
-    if len(str(item.excerpt)) > 5:
-        md += "\nexcerpt: '" + html_escape(item.excerpt) + "'"
-    
-    md += "\ndate: " + str(item.pub_date) 
-    
-    md += "\nvenue: '" + html_escape(item.venue) + "'"
-    
-    if len(str(item.paper_url)) > 5:
-        md += "\npaperurl: '" + item.paper_url + "'"
-    
-    md += "\ncitation: '" + html_escape(item.citation) + "'"
-    
+
+    month = datetime.strptime(item['plain_month'],"%B").month if 'plain_month' in item else 6
+    day = item['plain_day'] if 'plain_day' in item else 15
+    date = datetime(int(year), int(month), int(day)).isoformat() + "00:00:00 + 0500"
+
+    #     if not 'plain_date' in item:
+    #         raise Exception(item)
+    #     date = item['plain_date']
+    #     if len(date) == 4:
+    #         date += "-06-15 00:00:00 +0500"
+    #     elif len(date) == 7:
+    #         date += "-15 00:00:00 +0500"
+    #     elif len(date) == 10:
+    #         date += " 00:00:00 +0500"
+    #     else:
+    #         print(date)
+    #         break
+
+    md += "\ndate: " + date
+
+    if 'plain_journal' in item:
+        venue = item['plain_journal']
+    elif 'plain_eventtitle' in item:
+        venue = item['plain_eventtitle']
+    elif 'plain_booktitle' in item:
+        venue = item['plain_booktitle']
+    elif 'plain_journaltitle' in item:
+        venue = item['plain_journaltitle']
+    elif 'plain_school' in item:
+        venue = item['plain_institution']
+    else:
+        venue = False
+
+    if 'plain_note' in item:
+        note = item['plain_note']
+        venue += " (<b><i>" + note + "</i></b>)"
+
+    if venue:
+        md += "\nvenue: '" + html_escape(venue) + "'"
+
+    if 'plain_url' in item:
+        md += "\npaperurl: '" + item['plain_url'] + "'"
+
+    if 'plain_doi' in item:
+        md += "\ndoi: '" + item['plain_doi'] + "'"
+
+    #     pubtypes = {"inproceedings": "conference",
+    #                 "article": "journal",
+    #                 "thesis": "academic"}
+
+    md += "\npubtype: '" + item['plain_keywords'] + "'"
+
+    authors = ', '.join([parse_author(a) for a in item['plain_author'].split(' and ')])
+    md += "\nauthors: '" + authors + "'"
+
+    md += "\nexcerpt_separator: \"\""
+
     md += "\n---"
-    
+
     ## Markdown description for individual page
-    
-    if len(str(item.paper_url)) > 5:
-        md += "\n\n<a href='" + item.paper_url + "'>Download paper here</a>\n" 
-        
-    if len(str(item.excerpt)) > 5:
-        md += "\n" + html_escape(item.excerpt) + "\n"
-        
-    md += "\nRecommended citation: " + item.citation
-    
+
+    if 'plain_abstract' in item:
+        md += "\n" + html_escape(item['plain_abstract']) + "\n"
+
+    # if 'plain_url' in item:
+    #     md += "\n[Download paper here](" + item['plain_url'] + ")"
+
+    # if 'plain_doi' in item:
+    #     md += "\n[DOI](" + item['plain_doi'] + ")"
+
     md_filename = os.path.basename(md_filename)
-       
+
     with open("../_publications/" + md_filename, 'w') as f:
         f.write(md)
-
-
