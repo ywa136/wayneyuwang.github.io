@@ -2,9 +2,10 @@
 title: "A geometry-driven longitudinal topic model"
 collection: publications
 permalink: /publication/wang2020hdsr
-date: 2020-06-15T00:00:0000:00:00 + 0500
-venue: 'Harvard Data Science Review (<b><i>under review</i></b>)'
-pubtype: 'submitted'
+date: 2021-06-15T00:00:0000:00:00 + 0500
+venue: 'Harvard Data Science Review'
+paperurl: 'https://doi.org/10.1162/99608f92.b447c07e'
+pubtype: 'article'
 authors: '<b><i>Y. Wang</i></b>, C. Hougen, B. Oselio, W. Dempsey, A. Hero'
 excerpt_separator: ""
 ---

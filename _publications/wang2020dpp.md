@@ -2,10 +2,10 @@
 title: "Approximately Optimal Subset Selection for Statistical Design and Modelling"
 collection: publications
 permalink: /publication/wang2020dpp
-date: 2019-06-15T00:00:0000:00:00 + 0500
-venue: 'Journal of Statistical Computation and Simulation (<b><i>under review</i></b>)'
-paperurl: 'https://arxiv.org/abs/1709.00151'
-pubtype: 'submitted'
+date: 2021-06-15T00:00:0000:00:00 + 0500
+venue: 'Journal of Statistical Computation and Simulation'
+paperurl: 'https://doi.org/10.1080/00949655.2021.1900182'
+pubtype: 'article'
 authors: '<b><i>Y. Wang</i></b>, N. D. Le, J. V. Zidek'
 excerpt_separator: ""
 ---
