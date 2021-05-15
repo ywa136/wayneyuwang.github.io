@@ -3,7 +3,7 @@ title: "SG-PALM: a Fast Physically Interpretable Tensor Graphical Model"
 collection: publications
 permalink: /publication/wang2020icml21
 date: 2021-06-15T00:00:0000:00:00 + 0500
-venue: 'Proceedings of the Thirty-Eighth International Conference on Machine Learning'
+venue: 'Proceedings of the Thirty-Eighth International Conference on Machine Learning (ICML&apos;21)'
 pubtype: 'article'
 authors: '<b><i>Y. Wang</i></b>, A. Hero'
 excerpt_separator: ""
