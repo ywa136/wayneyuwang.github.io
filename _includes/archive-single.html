@@ -59,12 +59,14 @@
       <p>Recommended citation: {{ post.citation }} <a href="{{ post.paperurl }}"><u>{{ post.paperurl }}</u></a></p>
     {% elsif post.citation %}
       <p>Recommended citation: {{ post.citation }} </p>
-    {% elsif post.paperurl and post.doi %}
-    <br /><a href=" {{ post.paperurl }} "><u>File</u></a> &#124; <a href="https://doi.org/{{ post.doi }}"><u>DOI</u></a>
+    {% elsif post.paperurl and post.papercode %}
+    <br /><a href=" {{ post.paperurl }} "><u>File</u></a> &#124; <a href=" {{ post.papercode }} "><u>Code</u></a>
     {% elsif post.paperurl %}
     <br /><a href=" {{ post.paperurl }} "><u>File</u></a>
     {% elsif post.doi %}
     <br /><a href="https://doi.org/{{ post.doi }}"><u>DOI</u></a>
+    {% elsif post.papecode %}
+    <br /><a href=" {{ post.papercode }} "><u>Code</u></a>
     {% endif %}
 
   </article>
